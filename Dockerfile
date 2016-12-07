@@ -14,4 +14,4 @@ ENV PORT 3260
 ENV TARGETNAME iqn.2005-10.org.freenas.ctl:mystorage
 ENV LUN 0
 
-ENTRYPOINT ["/bin/sh","/tmp/mount-iscsi.sh"]
+ENTRYPOINT ["/bin/bash","/tmp/mount-iscsi.sh"]
