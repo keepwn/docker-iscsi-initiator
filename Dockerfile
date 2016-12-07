@@ -2,7 +2,7 @@ FROM alpine:3.4
 MAINTAINER keepwn <keepwn@gmail.com>
 
 RUN apk update \
-	&& apk install open-iscsi
+	&& apk add open-iscsi
 
 RUN mkdir /mnt/storage
 WORKDIR /tmp
