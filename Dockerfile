@@ -1,8 +1,8 @@
-FROM alpine:3.4
+FROM debian
 MAINTAINER keepwn <keepwn@gmail.com>
 
-RUN apk update \
-	&& apk add open-iscsi
+RUN apt-get update
+RUN apt-get install open-iscsi
 
 RUN mkdir /mnt/storage
 WORKDIR /tmp
