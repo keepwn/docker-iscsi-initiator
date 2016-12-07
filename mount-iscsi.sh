@@ -7,7 +7,7 @@ service open-iscsi restart
 echo "Discovering and mounting"
 iscsiadm -m discovery -t st -p $IP
 iscsiadm -m node --targetname "$TARGETNAME" --portal "$IP:$PORT" --login
-sleep 1
+sleep 5
 
 echo "Mounting new iSCSI-device"
 mount /dev/sdb1 /mnt/storage
