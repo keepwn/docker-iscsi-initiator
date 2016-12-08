@@ -17,6 +17,7 @@ umount_iscsi() {
     echo "Umounting iSCSI-mount"
     umount /mnt/storage
     iscsiadm -m node --targetname "$TARGETNAME" --portal "$IP:$PORT" --logout
+    echo "Umount finished"
 }
 
 trap "echo 'will stop';umount_iscsi;exit" SIGHUP SIGINT SIGQUIT SIGTERM
