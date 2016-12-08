@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mount() {
+mount_iscsi() {
     echo "Restarting iSCSI"
     service open-iscsi restart
 
@@ -13,18 +13,18 @@ mount() {
     mount /dev/disk/by-path/ip-$IP:$PORT-iscsi-$TARGETNAME-lun-0-part1 /mnt/storage
 }
 
-umount() {
+umount_iscsi() {
     echo "Umounting iSCSI-mount"
     umount /mnt/storage
     iscsiadm -m node --targetname "$TARGETNAME" --portal "$IP:$PORT" --logout
 }
 
-trap "echo 'will stop';umount;exit" SIGHUP SIGINT SIGQUIT SIGTERM
+trap "echo 'will stop';umount_iscsi;exit" SIGHUP SIGINT SIGQUIT SIGTERM
 
 # Mount
-mount
+mount_iscsi
 read -p "[enter key to exit]"
 
 # Umount
-umount
+umount_iscsi
 echo "exited $0"
