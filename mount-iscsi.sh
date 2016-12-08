@@ -10,7 +10,7 @@ iscsiadm -m node --targetname "$TARGETNAME" --portal "$IP:$PORT" --login
 sleep 5
 
 echo "Mounting new iSCSI-device"
-mount /dev/disk/by-path/ip-$IP:$PORT-iscsi-$TARGETNAME-lun-0 /mnt/storage
+mount /dev/disk/by-path/ip-$IP:$PORT-iscsi-$TARGETNAME-lun-0-part1 /mnt/storage
 echo "[enter key to exit]"
 read
 
