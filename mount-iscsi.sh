@@ -10,12 +10,12 @@ mount_iscsi() {
     sleep 1
 
     echo "Mounting new iSCSI-device"
-    mount /dev/disk/by-path/ip-$IP:$PORT-iscsi-$TARGETNAME-lun-0-part1 /mnt/storage
+    mount --uuid $UUID $MOUNTPOINT
 }
 
 umount_iscsi() {
     echo "Umounting iSCSI-mount"
-    umount /mnt/storage
+    umount $MOUNTPOINT
     iscsiadm -m node --targetname "$TARGETNAME" --portal "$IP:$PORT" --logout
     echo "Umount finished"
 }
