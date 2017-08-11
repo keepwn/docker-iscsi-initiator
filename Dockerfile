@@ -2,7 +2,7 @@ FROM debian
 MAINTAINER keepwn <keepwn@gmail.com>
 
 RUN apt-get update
-RUN apt-get install open-iscsi
+RUN apt-get install -y open-iscsi
 
 RUN mkdir /mnt/storage
 WORKDIR /tmp
